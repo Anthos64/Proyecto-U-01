@@ -1,0 +1,18 @@
+    create_sprite("s_floor02", 1);
+    add_frame_to_sprite("s_floor02", "Imagenes/Fondo/Floor02.png");
+    float floor02_size = 40;
+    float xfloor02 = 0;
+    float yfloor02 = 680;
+
+    if (simplificador_de_codigo__nivel_02 = true)
+        {
+            ///fondo
+
+            while (xfloor02 < 1200)
+                {
+                    add_object(xfloor02, yfloor02 - (floor02_size * 16), floor02_size, floor02_size, "s_floor02");
+                    xfloor02 = xfloor02 + floor02_size;
+            }
+            xfloor02 = 0;
+
+    }
