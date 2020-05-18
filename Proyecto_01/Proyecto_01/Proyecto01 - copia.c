@@ -330,7 +330,7 @@ int main()
             float xkey = 1120;
             float ykey = 100;
 
-            add_indexed_object("o_key", xkey, ykey, key_size, key_size, "s_discovered_key");
+            add_indexed_object("o_key", xkey, ykey, key_size, key_size, "s_not_discovered_key");
 
 
             create_sprite("s_discovered_pocket_watch", 1);
@@ -342,7 +342,31 @@ int main()
             float xwatch = 1120;
             float ywatch = 220;
 
-            add_indexed_object("o_watch", xwatch, ywatch, watch_size, watch_size, "s_discovered_pocket_watch");
+            add_indexed_object("o_watch", xwatch, ywatch, watch_size, watch_size, "s_not_discovered_pocket_watch");
+
+
+            create_sprite("s_discovered_boots", 1);
+            add_frame_to_sprite("s_discovered_boots", "Imagenes/Objetos/Bota_descubierto.png");
+
+            create_sprite("s_not_discovered_boots", 1);
+            add_frame_to_sprite("s_not_discovered_boots", "Imagenes/Objetos/Bota_no_descubierto.png");
+            float boot_size = 80;
+            float xboot = 1120;
+            float yboot = 340;
+
+            add_indexed_object("o_boot", xboot, yboot, boot_size, boot_size, "s_not_discovered_boots");
+
+
+            create_sprite("s_discovered_mechanical_glove", 1);
+            add_frame_to_sprite("s_discovered_mechanical_glove", "Imagenes/Objetos/Guante_descubierto.png");
+
+            create_sprite("s_not_discovered_mechanical_glove", 1);
+            add_frame_to_sprite("s_not_discovered_mechanical_glove", "Imagenes/Objetos/Guante_no_descubierto.png");
+            float glove_size = 80;
+            float xglove = 1120;
+            float yglove = 460;
+
+            add_indexed_object("o_glove", xglove, yglove, glove_size, glove_size, "s_not_discovered_mechanical_glove");
 
 
             create_sprite("s_discovered_machine_heart", 1);
@@ -352,7 +376,7 @@ int main()
             add_frame_to_sprite("s_not_discovered_machine_heart", "Imagenes/Objetos/Corazon_no_descubierto.png");
             float heart_size = 80;
             float xheart = 1120;
-            float yheart = 340;
+            float yheart = 580;
 
             add_indexed_object("o_heart", xheart, yheart, heart_size, heart_size, "s_not_discovered_machine_heart");
     }
@@ -363,7 +387,9 @@ int main()
             add_frame_to_sprite("s_player", "Imagenes/Alba/Alba_standing.png");
             float a_size = 160;
             float xalba = 0;
+            float xalba2 = xalba + a_size;
             float yalba = 40;
+            float yalba2 = yalba2 + a_size;
 
             create_sprite("cheer_player", 5);
             add_frame_to_sprite("cheer_player", "Imagenes/Alba/Alba_cheering2.png");
@@ -400,8 +426,16 @@ int main()
             add_frame_to_sprite("waking_player_left", "Imagenes/Alba/Alba_walkingL2.png");
 
 
-            create_sprite("s_scavenger", 1);
+            create_sprite("s_scavenger", 5);
             add_frame_to_sprite("s_scavenger", "Imagenes/Enemigos/Scavenger/Scavenger01_P1W1.png");
+            add_frame_to_sprite("s_scavenger", "Imagenes/Enemigos/Scavenger/Scavenger02_P2W2.png");
+            add_frame_to_sprite("s_scavenger", "Imagenes/Enemigos/Scavenger/Scavenger03_P3W3.png");
+            add_frame_to_sprite("s_scavenger", "Imagenes/Enemigos/Scavenger/Scavenger04_P1W4.png");
+            add_frame_to_sprite("s_scavenger", "Imagenes/Enemigos/Scavenger/Scavenger05_P2W5.png");
+            add_frame_to_sprite("s_scavenger", "Imagenes/Enemigos/Scavenger/Scavenger06_P3W6.png");
+            add_frame_to_sprite("s_scavenger", "Imagenes/Enemigos/Scavenger/Scavenger07_P1W7.png");
+
+
             float sca_size = 160;
             float xscavenger = 480;
             float yscavenger = 80;
@@ -424,12 +458,12 @@ int main()
 
             if (ks_up == true){
                 set_indexed_object_origin("o_scavenger", xscavenger, yscavenger);
-                yscavenger = yscavenger - 7;
+                yscavenger = yscavenger - 5;
             }
 
             if (ks_down == true){
                 set_indexed_object_origin("o_scavenger", xscavenger, yscavenger);
-                yscavenger = yscavenger + 7;
+                yscavenger = yscavenger + 5;
             }
 
 
@@ -438,6 +472,7 @@ int main()
             bool k_up = is_key_pressed("up");
             bool k_down = is_key_pressed("down");
             bool k_pause = is_key_pressed("g");
+
 
             if (k_pause == true)
                 {
@@ -450,26 +485,152 @@ int main()
                     set_indexed_object_sprite("o_alba", "waking_player_left");
                     set_indexed_object_origin("o_alba", xalba, yalba);
                     xalba = xalba - 3;
+                    xalba2 = xalba2 - 3;
             }
             if (k_right == true)
                 {
                     set_indexed_object_sprite("o_alba", "waking_player_right");
                     set_indexed_object_origin("o_alba", xalba, yalba);
                     xalba = xalba + 3;
+                    xalba2 = xalba2 + 3;
             }
             if (k_up == true)
                     {
                     set_indexed_object_origin("o_alba", xalba, yalba);
                     yalba = yalba - 3;
+                    yalba2 = yalba2 - 3;
             }
             if (k_down == true)
                 {
                     set_indexed_object_origin("o_alba", xalba, yalba);
                     yalba = yalba + 3;
+                    yalba2 = yalba2 + 3;
             }
             if ((k_right == false) && (k_left == false))
                 set_indexed_object_sprite("o_alba", "s_player");
 
+
+
+
+
+            if (xalba2 > 1140){
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    xalba = xalba - 3;
+                    xalba2 = xalba2 - 3;
+            }
+
+            if (xalba < -20){
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    xalba = xalba + 3;
+                    xalba2 = xalba2 + 3;
+            }
+            if (yalba < 35){
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    yalba = yalba + 3;
+                    yalba2 = yalba2 + 3;
+            }
+            if (yalba > 480){
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    yalba = yalba - 3;
+                    yalba2 = yalba2 - 3;
+            }
+
+
+            if ((xalba < 260 && yalba < 270) && (yalba > 40 && xalba2 > 376))
+                {
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    xalba = xalba - 3;
+                    xalba2 = xalba2 - 3;
+            }
+            if ((xalba < 340 && yalba < 270) && (yalba > 40 && xalba2 > 460))
+                {
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    xalba = xalba + 3;
+                    xalba2 = xalba2 + 3;
+            }
+            if ((yalba > 38 && xalba2 > 380) && (xalba < 335 && yalba < 270))
+                {
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    yalba = yalba - 3;
+                    yalba2 = yalba2 - 3;
+            }
+            if ((yalba < 275 && yalba > 100) && (xalba2 > 380 && xalba < 335)){
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    yalba = yalba + 3;
+                    yalba2 = yalba2 + 3;
+            }
+
+
+            if ((yalba < 275 && xalba2 > 745) && (xalba > 630 && yalba > 100 && xalba < 740)){
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    yalba = yalba + 3;
+                    yalba2 = yalba2 + 3;
+             }
+             if ((yalba > 38 && xalba2 > 745) && (xalba > 630 && yalba < 100 && xalba < 740)){
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    yalba = yalba - 3;
+                    yalba2 = yalba2 - 3;
+            }
+             if ((yalba > 38 && xalba2 > 670) && (xalba > 615 && yalba < 270 && xalba < 735)){
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    xalba = xalba - 3;
+                    xalba2 = xalba2 - 3;
+            }
+             if ((yalba > 38 && xalba2 > 650) && (xalba > 615 && yalba < 270 && xalba < 743)){
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    xalba = xalba + 3;
+                    xalba2 = xalba2 + 3;
+            }
+
+
+            if ((xalba < 175 && yalba < 270) && (yalba > 40 && xalba2 > 175))
+                {
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    xalba = xalba - 3;
+                    xalba2 = xalba2 - 3;
+            }
+            if ((xalba < 180 && yalba < 270) && (yalba > 40 && xalba2 > 200))
+                {
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    xalba = xalba + 3;
+                    xalba2 = xalba2 + 3;
+            }
+            if ((yalba > 38 && xalba2 > 180) && (xalba < 175 && yalba < 270))
+                {
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    yalba = yalba - 3;
+                    yalba2 = yalba2 - 3;
+            }
+            if ((yalba < 275 && yalba > 100) && (xalba2 > 180 && xalba < 175)){
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    yalba = yalba + 3;
+                    yalba2 = yalba2 + 3;
+            }
+
+
+            if ((xalba < 175 && yalba < 430) && (yalba > 280 && xalba2 > 175))
+                {
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    xalba = xalba - 3;
+                    xalba2 = xalba2 - 3;
+            }
+            if ((xalba < 180 && yalba < 430) && (yalba > 280 && xalba2 > 200))
+                {
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    xalba = xalba + 3;
+                    xalba2 = xalba2 + 3;
+            }
+            if ((yalba > 278&& xalba2 > 180) && (xalba < 175 && yalba < 430))
+                {
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    yalba = yalba - 3;
+                    yalba2 = yalba2 - 3;
+            }
+            if ((yalba < 435 && yalba > 340) && (xalba2 > 180 && xalba < 175)){
+                    set_indexed_object_origin("o_alba", xalba, yalba);
+                    yalba = yalba + 3;
+                    yalba2 = yalba2 + 3;
+            }
 
 
 
